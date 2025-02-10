@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: sqlite:latest
+    container_name: ushiku-wm_db
+    restart: always
+    volumes:
+      - sqlite:/var/lib/sqlite
+  web:
+    build: .
+    container_name: ushiku-wm_web
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+volumes:
+  sqlite:
