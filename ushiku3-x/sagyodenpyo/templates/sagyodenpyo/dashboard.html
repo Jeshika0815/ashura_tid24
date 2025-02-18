@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}ダッシュボード{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .navbar {
+        display: flex;
+        background-color: #b0d4ff;
+        padding: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .navbar a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 20px;
+        border: 2px solid blue;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .navbar a:hover {
+        background-color: lightblue;
+    }
+    .content {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .content img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+<script>
+const times = new Date();
+const day = times.getMonth();
+const hou = times.getHours();
+
+window.addEventListener('DOMContentLoaded',function (){
+let hello = document.querySelector("#als");
+if(day < 9 ){
+    if(hou >= 3 && hou < 10){
+        hello.innerHTML = `<h1 class="tit">おはようございます</h1>`;
+    }else if(hou >= 10 && hou <18){
+        hello.innerHTML = `<h1 class="tit">こんにちは</h1>`;
+    }else{hello.innerHTML = `<h1 class="tit">こんばんは</h1>`;}
+}
+else{
+    if(hou >= 6 && hou <10){
+        hello.innerHTML = `<h1 class="tit">おはようございます</h1>`;
+    }else if(hou >= 10 && hou <18){
+        hello.innerHTML = `<h1 class="tit">こんにちは</h1>`;
+    }else{hello.innerHTML = `<h1 class="tit">こんばんは</h1>`;}
+}
+});
+</script>
+</head>
+<body>
+<div class="content">
+    <div style="position: absolute; background:greenyellow; padding:10px; left:0; right:0; z-index:1;" ><br>
+    <p><span id="als"></span> 今日も頑張りましょう!!</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <style>
+        .gta{
+            padding:5px 10px;
+            background: rgb(214, 214, 214);
+            border-radius: 5px;
+            width:700px;
+        } .gta label{font-size: x-large; font-weight: bold;} .gta img{width:600px; height:350px;}
+    </style>
+
+
+
+<h1 style="text-align: center;">個人の作業履歴</h1>
+<table style="margin: 0 auto; border-collapse: collapse;"border="1">
+    <thead>
+        <tr>
+            <th>日付</th>
+            <th>工番</th>
+            <th>件名</th>
+            <th>作業コード</th>
+            <th>作業時間</th>
+            <th>修正</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in work_logs %}
+        <tr>
+            <td>{{ log.date }}</td>
+            <td>{{ log.work_number }}</td>
+            <td>{{ log.subject }}</td>
+            <td>{{ log.get_work_code_display }}</td>
+            <td>{{ log.work_hours }}</td>
+            <td><a href="{% url 'sagyodenpyo:edit_work_log' log.pk %}">修正</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'sagyodenpyo:log_work' %}">新しい作業伝票を入力</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}作業データ管理システム{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'ico/aaa.png' %}" >
+    <link rel="manifest" href="{% static 'pwa/manifest.json' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'sagyodenpyo:dashboard' %}" class="hm">HOME</a>　
+        <a href="{% url 'sagyoshiji:work_order_list' %}"class="hm">作業指示票</a>　
+        <a href="{% url 'sagyodenpyo:work_log_list' %}" class="hm">個人履歴</a>　
+        <a href="{% url 'sagyodenpyo:all_work_logs_by_date' %}"class="hm">全体履歴</a>　
+        　　
+        {% if user.is_authenticated %}
+        <span>❖ {{ user.id }} : {{ user.full_name }} </span>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" onclock="return confirm('ログアウトしてもよろしいですか？');">ログアウト</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="hm">ログイン</a>
+    {% endif %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

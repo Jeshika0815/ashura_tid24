@@ -1,0 +1,53 @@
+/*style.css*/
+/*coded T.Saito*/
+
+body{margin:0;}
+/*header*/
+header{width:auto; background:#0084ff; padding:5px; padding-bottom: 10px; font-size: x-large;}
+header button{border:none; font-size: large; background:none; border-radius: 5px; padding:3px 5px; color: rgb(0, 0, 0); justify-content: space-between;}
+header button:hover{background:#c5f0ff;}
+header .hm{border:none; font-size: large; text-decoration: none; background:none; border-radius: 5px; padding:5px 10px; color: rgb(0, 0, 0); justify-content: space-between;}
+header .hm:hover{background:#c5f0ff;}
+
+/*component*/
+.mgform{border-radius: 5px; padding:10px 20px; outline:none; border:2px solid dimgray; padding:5px; font-size:large;}
+.mgform:focus{border:2px solid dimgray;}
+.mgform:hover{background:silver;}
+.mgforms{border-radius: 5px; padding:10px 20px; outline:none;  outline: none; padding:5px; font-size:large;}
+textarea{resize:none; }
+.taform{padding:3px 5px; border-radius: 5px; border:1px solid gray;}
+.taform textarea{display:inline; width:80%; resize:none; border:none; outline: none; }
+
+/* Tables */
+table{border-collapse: collapse; } table td{padding:5px;}
+
+/*footer*/
+.sents{position:fixed; bottom:0; left:0; right:0; font-size: large; padding:5px 10px; background:silver; text-align: right;}
+.sents button{background:black; color:white; font-size: medium; border-radius: 5px; border:none;}
+.sents button:hover{background:rgb(132, 132, 132); color:black; font-size: medium; border-radius: 5px; border:none;}
+
+/* input */
+input[type="text"], input[type="date"], input[type="time"], input[type="number"] textarea .sel {
+    width: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.edit-link {
+    color: blue;
+    text-decoration: underline;
+    margin-top: 10px;
+    display: block;
+}
+.sub_bt {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.sub_bt:hover {
+    background-color: #555;
+}
